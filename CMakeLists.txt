@@ -1,10 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../stm32-cmake/cmake/stm32_gcc.cmake)
-set(STM32_CUBE_F4_PATH $ENV{STM32_CUBE_F4_PATH})
-set(STM32_TARGET_TRIPLET arm-none-eabi)
-
-set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+# STM32_TOOLCHAIN_PATH, STM32_TARGET_TRIPLET, STM32_CUBE_F4_PATH must be present in environment variables
+# check https://github.com/DVALight/stm32-cmake for more info
 
 project(stm32-test C ASM)
 set(SOURCES
