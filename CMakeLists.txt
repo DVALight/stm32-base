@@ -31,4 +31,9 @@ target_link_libraries(stm32-test
     CMSIS::STM32::F407VG
     STM32::NoSys
 )
+
+add_custom_command(TARGET stm32-test POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} -O ihex stm32-test.elf stm32-test.hex
+)
+
 stm32_print_size_of_target(stm32-test)
