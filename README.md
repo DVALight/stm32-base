@@ -1,4 +1,4 @@
-# stm32-test
+# stm32-base
 
 STM32 CMake base configuration and HAL core for use in projects.
 
