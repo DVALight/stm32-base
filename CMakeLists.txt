@@ -5,13 +5,19 @@ cmake_minimum_required(VERSION 3.16)
 
 project(stm32-test C ASM)
 set(SOURCES
-    main.c
+    src/core/stm32f4xx_it.c
+    src/core/stm32f4xx_hal_msp.c
+    src/core/syscalls.c
+    src/core/sysmem.c
+    src/main.c
 )
 
 set(HEADERS
-    stm32f4xx_hal_conf.h
+    src/core/stm32f4xx_it.h
+    src/core/stm32f4xx_hal_conf.h
 )
 
+include_directories(src src/core)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
 
 set(HAL_COMP_LIST RCC GPIO CORTEX)
