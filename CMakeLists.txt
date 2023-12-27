@@ -34,7 +34,7 @@ target_link_libraries(stm32-test
     HAL::STM32::F4::RCC
     HAL::STM32::F4::GPIO
     HAL::STM32::F4::CORTEX
-    CMSIS::STM32::F407VG
+    CMSIS::STM32::F401VE
     STM32::NoSys
 )
 
