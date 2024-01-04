@@ -17,7 +17,7 @@
   */
 /* USER CODE END Header */
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_it.h"
+#include "hal_isr.h"
 
 /******************************************************************************/
 /*           Cortex-M4 Processor Interruption and Exception Handlers          */

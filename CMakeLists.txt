@@ -5,16 +5,16 @@ cmake_minimum_required(VERSION 3.16)
 
 project(stm32-base C ASM)
 set(SOURCES
-    src/core/stm32f4xx_it.c
-    src/core/stm32f4xx_hal_msp.c
     src/core/syscalls.c
     src/core/sysmem.c
+    src/hal_isr.c
+    src/hal_msp.c
     src/main.c
 )
 
 set(HEADERS
-    src/core/stm32f4xx_it.h
-    src/core/stm32f4xx_hal_conf.h
+    src/stm32f4xx_hal_conf.h
+    src/hal_isr.h
 )
 
 include_directories(src src/core)
