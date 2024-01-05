@@ -4,12 +4,12 @@ STM32 CMake base configuration and HAL core for use in projects.
 
 ## File structure
 ### src/
-Your main source code goes here
+- stm32f4xx_hal_conf.h - HAL configuration file. Required by external libraries
+- hal_msp.c - your HAL MSP callbacks to prepare hardware for HAL modules
+- hal_isr.c - your interrupt / exception handlers
+- main.c - your main source code goes here
 
 ### src/core/
 Core source code for STM32 HAL
-- stm32f4xx_hal_conf.h - enable different HAL module includes, some basic config
-- stm32f4xx_hal_msp.c - HAL MSP callbacks to prepare hardware for HAL modules
-- stm32f4xx_hal_it.c - interrupt / exception handlers
 - syscalls.c - POSIX syscalls overrides
-- sysmem.c - sbrk implementation for heap allocator 
+- sysmem.c - sbrk implementation for heap allocator
