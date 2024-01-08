@@ -17,15 +17,11 @@ set(HEADERS
     src/hal_isr.h
 )
 
-include_directories(src src/core)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
 
 #set(HAL_COMP_LIST RCC GPIO CORTEX)
-set(HAL_COMP_LIST )
-set(CMSIS_COMP_LIST "")
-
-list(APPEND CMSIS_COMP_LIST STM32F4)
 list(APPEND HAL_COMP_LIST STM32F4)
+list(APPEND CMSIS_COMP_LIST "STM32F4")
 
 if(NOT STM32_CMAKE_PACKAGES)
     find_package(CMSIS COMPONENTS "${CMSIS_COMP_LIST}" REQUIRED)
@@ -34,6 +30,10 @@ if(NOT STM32_CMAKE_PACKAGES)
 endif()
 
 add_executable(stm32-base ${SOURCES} ${HEADERS})
+target_include_directories(stm32-base PRIVATE # change to PUBLIC if you're making library
+    src
+)
+
 target_link_libraries(stm32-base
 #    HAL::STM32::F4::RCC
 #    HAL::STM32::F4::GPIO
