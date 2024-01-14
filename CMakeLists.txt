@@ -17,11 +17,16 @@ set(HEADERS
     src/hal_isr.h
 )
 
-set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
+
+# change to your MCU family and model!
+if(NOT MCU_FAMILY)
+    set(MCU_FAMILY              "F4"            CACHE INTERNAL "STM32 MCU family")
+    set(MCU_MODEL               "F401VE"        CACHE INTERNAL "STM32 MCU model")
+endif()
 
 #set(HAL_COMP_LIST RCC GPIO CORTEX)
 list(APPEND HAL_COMP_LIST STM32F4)
-list(APPEND CMSIS_COMP_LIST "STM32F4")
+list(APPEND CMSIS_COMP_LIST "STM32${MCU_FAMILY}")
 
 if(NOT STM32_CMAKE_PACKAGES)
     find_package(CMSIS COMPONENTS "${CMSIS_COMP_LIST}" REQUIRED)
@@ -35,11 +40,11 @@ target_include_directories(stm32-base PRIVATE # change to PUBLIC if you're makin
 )
 
 target_link_libraries(stm32-base
-#    HAL::STM32::F4::RCC
-#    HAL::STM32::F4::GPIO
-    HAL::STM32::F4::CORTEX
-    CMSIS::STM32::F401VE
-    STM32::NoSys
+#   HAL::STM32::${MCU_FAMILY}::RCC
+#   HAL::STM32::${MCU_FAMILY}::GPIO
+   HAL::STM32::${MCU_FAMILY}::CORTEX
+   CMSIS::STM32::${MCU_MODEL}
+   STM32::NoSys
 )
 
 add_custom_command(TARGET stm32-base POST_BUILD
