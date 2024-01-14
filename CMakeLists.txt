@@ -38,6 +38,11 @@ add_executable(stm32-base ${SOURCES} ${HEADERS})
 target_include_directories(stm32-base PRIVATE # change to PUBLIC if you're making library
     src
 )
+target_compile_definitions(stm32-base PRIVATE
+    #HAL_RCC_MODULE_ENABLED
+    #HAL_FLASH_MODULE_ENABLED
+    #HAL_CORTEX_MODULE_ENABLED
+)
 
 target_link_libraries(stm32-base
 #   HAL::STM32::${MCU_FAMILY}::RCC
